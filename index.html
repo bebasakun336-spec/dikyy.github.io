@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .login-box label {
+      display: block;
+      margin: 5px 0;
+      font-size: 14px;
+      text-align: left;
+    }
+    .login-box input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .login-box button:hover {
+      background: #218838;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label>Nama Pengguna</label>
+      <input type="text" id="username" name="username" placeholder="Nama Pengguna" required>
+
+      <label>Kata Sandi</label>
+      <input type="password" id="password" name="password" placeholder="Kata Sandi" required>
+
+      <label>
+        <input type="checkbox" onclick="togglePassword()"> Tampilkan Kata Sandi
+      </label>
+
+      <label>
+        <input type="checkbox" id="rememberMe"> Simpan Login
+      </label>
+
+      <button type="submit">Masuk</button>
+      <div class="error" id="errorMsg"></div>
+    </form>
+  </div>
+
+  <script>
+    // Tampilkan/sembunyikan password
+    function togglePassword() {
+      var pwd = document.getElementById("password");
+      pwd.type = (pwd.type === "password") ? "text" : "password";
+    }
+
+    // Ambil data tersimpan saat halaman dibuka
+    window.onload = function() {
+      if (localStorage.getItem("username")) {
+        document.getElementById("username").value = localStorage.getItem("username");
+        document.getElementById("password").value = localStorage.getItem("password");
+        document.getElementById("rememberMe").checked = true;
+      }
+    };
+
+    // Login dengan validasi
+    document.getElementById("loginForm").onsubmit = function(e) {
+      e.preventDefault();
+
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var remember = document.getElementById("rememberMe").checked;
+      var errorMsg = document.getElementById("errorMsg");
+
+      // Data login yang benar
+      var validUser = "DIKY1243";
+      var validPass = "LOGIN123";
+
+      if (username === validUser && password === validPass) {
+        if (remember) {
+          localStorage.setItem("username", username);
+          localStorage.setItem("password", password);
+        } else {
+          localStorage.removeItem("username");
+          localStorage.removeItem("password");
+        }
+        // Redirect ke halaman biodata
+        window.location.href = "biodata.html";
+      } else {
+        errorMsg.textContent = "Nama pengguna atau kata sandi salah!";
+      }
+    };
+  </script>
+</body>
+</html>

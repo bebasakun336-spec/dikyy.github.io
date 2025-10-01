@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata & Riwayat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 220px;
+      background: #2c3e50;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .menu button {
+      padding: 12px;
+      background: #34495e;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+    }
+    .menu button:hover {
+      background: #1abc9c;
+    }
+    .content {
+      flex: 1;
+      background: white;
+      padding: 25px;
+      overflow-y: auto;
+    }
+    .content h1 {
+      margin-top: 0;
+      color: #333;
+    }
+    .content p {
+      font-size: 16px;
+      margin: 6px 0;
+    }
+    strong {
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar kiri -->
+  <div class="sidebar">
+    <h2>Menu</h2>
+    <div class="menu">
+      <button onclick="showContent('biodata')">Biodata</button>
+      <button onclick="showContent('pendidikan')">Riwayat Pendidikan</button>
+      <button onclick="showContent('olahraga')">Riwayat Olahraga</button>
+      <button onclick="showContent('sakit')">Riwayat Sakit</button>
+    </div>
+  </div>
+
+  <!-- Konten kanan -->
+  <div class="content" id="content">
+    <h1>Selamat Datang</h1>
+    <p>Pilih menu di sebelah kiri untuk melihat detail informasi.</p>
+  </div>
+
+  <script>
+    function showContent(menu) {
+      let content = document.getElementById("content");
+
+      if (menu === "biodata") {
+        content.innerHTML = `
+          <h1>Biodata Diri</h1>
+          <h2>● DATA DIRI</h2>
+          <p><strong>Nama Lengkap:</strong> Diky Hernawan</p>
+          <p><strong>Nama Panggilan:</strong> Diky</p>
+          <p><strong>Tempat, Tanggal Lahir:</strong> Sumedang, 25 Desember 2008</p>
+          <p><strong>Jenis Kelamin:</strong> Laki-Laki</p>
+          <p><strong>Agama:</strong> Islam</p>
+          <p><strong>Kewarganegaraan:</strong> Indonesia</p>
+          <p><strong>Status Perkawinan:</strong> Pelajar / Belum menikah</p>
+          <p><strong>Golongan Darah:</strong> O</p>
+          <p><strong>Berat & Tinggi Badan:</strong> 82kg & 170cm</p>
+          <h2>● KONTAK</h2>
+          <p><strong>Alamat Lengkap:</strong> 
+            Dsn. Calangcang, Rt 25 Rw 08, Ds. Legok Kidul, 
+            Kec. Paseh, Kab. Sumedang, Jawa Barat, 46381
+          </p>
+        `;
+      } else if (menu === "pendidikan") {
+        content.innerHTML = `
+          <h1>Riwayat Pendidikan</h1>
+          <h2>• Pendidikan Anak Usia Dini</h2>
+          <p>- Paud Desa Legok Kidul (2012-2013)</p>
+
+          <h2>• Taman Kanak-Kanak</h2>
+          <p>- PGRI Mekar Arum (2013-2014)</p>
+
+          <h2>• Sekolah Dasar</h2>
+          <p>- SDN Babakan Buah (2014-2020)</p>
+
+          <h2>• Sekolah Menengah Pertama</h2>
+          <p>- Pondok Pesantren Adzkiya Mansyaul Hikam (2020-2021)</p>
+          <p>- SMPN 1 Paseh (2021-2024)</p>
+
+          <h2>• Sekolah Menengah Atas</h2>
+          <p>- SMAN 2 Cimalaka (2024-2027)</p>
+        `;
+      } else if (menu === "olahraga") {
+        content.innerHTML = `
+          <h1>Riwayat Olahraga</h1>
+          <h2>• Badminton</h2>
+          <p>- Eskul SMPN 1 Paseh (PB Spensapas)</p>
+          <p>- PB Kusuma (Tasikmalaya, Jawa Barat)</p>
+          <p>- PB Meteor (Paseh, Jawa Barat)</p>
+          <p>- PB Saka (SMAN 1 Cimalaka)</p>
+          <p>- PB Adinira (SMAN 1 Sumedang)</p>
+          <p>- PB Anges (Legok, Sumedang)</p>
+          <p>- PB Kharisma (Paseh, Sumedang)</p>
+          <p>- PB Sakral (Galuhmas, Karawang)</p>
+          <p>- De Frencs (Teluk Jambe, Karawang)</p>
+        `;
+      } else if (menu === "sakit") {
+        content.innerHTML = `
+          <h1>Riwayat Sakit</h1>
+          <p>Contoh: Pernah sakit demam, flu, dll.</p>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
